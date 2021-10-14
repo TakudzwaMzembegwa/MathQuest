@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MathQuest.Views.HomePage"
+             xmlns:vm="clr-namespace:MathQuest.ViewModels"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <Label Text="Welcome to MathQuest" FontSize="Title"/>
+                <Label Text="Select the difficulty level and start playing." FontSize="16" Padding="0,0,0,0"/>
+                <StackLayout x:Name="radioButtons">
+                    <RadioButton Content="Easy" IsChecked="True" CheckedChanged="RadioSelected"></RadioButton>
+                    <RadioButton Content="Intermediate" IsChecked="False" CheckedChanged="RadioSelected"></RadioButton>
+                    <RadioButton Content="Difficult" IsChecked="False" CheckedChanged="RadioSelected"></RadioButton>
+                </StackLayout>
+                <Button Margin="0,10,0,0" Text="Play"
+                        Clicked="BtnSelect_Case"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
