@@ -96,6 +96,7 @@ namespace MathQuest.ViewModels
                 else if (counter > 9)
                 {
                     counter = 0;
+                    totalCorrect = 0;
                     Symbol = "⏭";
                 }
                 Num1 = rand.Next(max + 1).ToString();
