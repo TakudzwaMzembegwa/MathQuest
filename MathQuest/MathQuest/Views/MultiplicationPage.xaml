@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:MathQuest.ViewModels"
+             x:Class="MathQuest.Views.MultiplicationPage">
+    <Grid RowSpacing="0"
+          ColumnSpacing="0">
+        <Grid.BindingContext>
+            <local:MultiplicationViewModel />
+        </Grid.BindingContext>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <Style TargetType="BoxView">
+                    <Setter Property="BackgroundColor" Value="Gainsboro" />
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="80" />
+                    <Setter Property="TextColor" Value="#24a0ed" />
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <BoxView Grid.ColumnSpan="3"
+                 />
+        <Label Grid.ColumnSpan="3"
+               Text="MathQuest"
+               FontSize="25"
+               TextColor="#24a0ed"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+        <BoxView Grid.Row="1"/>
+        <Label Text="{Binding Num1}"
+               HorizontalOptions="End"
+               VerticalOptions="Center"  Grid.Row="1"/>
+        <BoxView Grid.Row="1" Grid.Column="1" />
+        <Label Grid.Row="1" Grid.Column="1"
+               Text="x"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <BoxView Grid.Row="1" Grid.Column="2"/>
+        <Label Grid.Row="1" Grid.Column="2"
+               Text="{Binding Num2}"
+               HorizontalOptions="Start"
+               VerticalOptions="Center" />
+        <BoxView  Grid.Row="2" Grid.ColumnSpan="3"
+                 Color="CornflowerBlue" />
+        <Grid Grid.Row="2" Grid.ColumnSpan="3" 
+          ColumnSpacing="2"
+          RowSpacing="2">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="Button">
+                        <Setter Property="FontSize" Value="25" />
+                        <Setter Property="BorderWidth" Value="1" />
+                        <Setter Property="BorderColor" Value="Black" />
+                    </Style>
+                </ResourceDictionary>
+            </Grid.Resources>
+
+            <Label Text="{Binding Entry}"
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+               FontSize="32"
+                   BackgroundColor="WhiteSmoke"
+               LineBreakMode="HeadTruncation"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="End" />
+
+            <Button Text="CLEAR"
+                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                Command="{Binding ClearCommand}" />
+
+            <Button Text="&#x21E6;"
+                Grid.Row="1" Grid.Column="2"
+                Command="{Binding BackspaceCommand}" />
+
+            <Button Text="7"
+                Grid.Row="2" Grid.Column="0"
+                Command="{Binding DigitCommand}"
+                CommandParameter="7" />
+
+            <Button Text="8"
+                Grid.Row="2" Grid.Column="1"
+                Command="{Binding DigitCommand}"
+                CommandParameter="8" />
+
+            <Button Text="9"
+                Grid.Row="2" Grid.Column="2"
+                Command="{Binding DigitCommand}"
+                CommandParameter="9" />
+
+            <Button Text="4"
+                Grid.Row="3" Grid.Column="0"
+                Command="{Binding DigitCommand}"
+                CommandParameter="4" />
+
+            <Button Text="5"
+                Grid.Row="3" Grid.Column="1"
+                Command="{Binding DigitCommand}"
+                CommandParameter="5" />
+
+            <Button Text="6"
+                Grid.Row="3" Grid.Column="2"
+                Command="{Binding DigitCommand}"
+                CommandParameter="6" />
+
+            <Button Text="1"
+                Grid.Row="4" Grid.Column="0"
+                Command="{Binding DigitCommand}"
+                CommandParameter="1" />
+
+            <Button Text="2"
+                Grid.Row="4" Grid.Column="1"
+                Command="{Binding DigitCommand}"
+                CommandParameter="2" />
+
+            <Button Text="3"
+                Grid.Row="4" Grid.Column="2"
+                Command="{Binding DigitCommand}"
+                CommandParameter="3" />
+
+            <Button Text="0"
+                Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                Command="{Binding DigitCommand}"
+                CommandParameter="0" />
+
+            <Button Text="&#x23ED;"
+                Grid.Row="5" Grid.Column="2"
+                Command="{Binding NextCommand}"
+                CommandParameter="." />
+        </Grid>
+
+        <!--Editor x:Name="caseEditor" Grid.Row="2" Grid.ColumnSpan="3"  BackgroundColor="#ff97d3ff"  VerticalOptions="FillAndExpand" /-->
+    </Grid>
+        
+
+</ContentPage>
