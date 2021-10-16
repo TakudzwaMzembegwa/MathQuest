@@ -30,7 +30,7 @@
                     <RadioButton Content="Difficult" IsChecked="False" CheckedChanged="RadioSelected"></RadioButton>
                 </StackLayout>
                 <Button Margin="0,10,0,0" Text="Play"
-                        Clicked="BtnSelect_Case"
+                        Clicked="OnSubmit"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
             </StackLayout>

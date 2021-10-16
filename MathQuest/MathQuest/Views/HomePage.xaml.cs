@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MathQuest.ViewModels;
 
 namespace MathQuest.Views
 {
@@ -21,8 +22,21 @@ namespace MathQuest.Views
             difficultyLevel = (sender as RadioButton).Content.ToString();
         }
 
-        public void BtnSelect_Case(object sender, EventArgs e)
-        { 
+        async void OnSubmit(object sender, EventArgs e)
+        {
+            switch (difficultyLevel)
+            {
+                case "Easy":
+                    MultiplicationViewModel.max = 5;
+                    break;
+                case "Intermediate":
+                    MultiplicationViewModel.max = 12;
+                    break;
+                default:
+                    MultiplicationViewModel.max = 99;
+                    break;
+            }
+            await Navigation.PushAsync(new MultiplicationPage());
         }
     }
 }
