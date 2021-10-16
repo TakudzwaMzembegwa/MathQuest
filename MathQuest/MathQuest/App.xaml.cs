@@ -1,5 +1,4 @@
-﻿using MathQuest.Services;
-using MathQuest.Views;
+﻿using MathQuest.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,8 +12,7 @@ namespace MathQuest
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new HomePage());
         }
 
         protected override void OnStart()
