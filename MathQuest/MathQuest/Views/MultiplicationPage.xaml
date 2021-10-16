@@ -19,9 +19,11 @@
                 </Style>
             </ResourceDictionary>
         </Grid.Resources>
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="0.495*"/>
+            <RowDefinition Height="0.495*"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -29,31 +31,33 @@
             <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <BoxView Grid.ColumnSpan="3"
+        <ProgressBar Grid.ColumnSpan="3" Progress="{Binding CurrentProgress}" ProgressColor="Orange"/>
+        <BoxView Grid.Row="1" Grid.ColumnSpan="3"
                  />
-        <Label Grid.ColumnSpan="3"
-               Text="MathQuest"
+        <Label Grid.Row="1" Grid.ColumnSpan="3"
+               Text="{Binding Feedback}"
                FontSize="25"
-               TextColor="#24a0ed"
+               TextColor="{Binding FeedbackColor}"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
-        <BoxView Grid.Row="1"/>
-        <Label Text="{Binding Num1}"
+        <BoxView Grid.Row="2"/>
+        <Label   Grid.Row="2"
+                 Text="{Binding Num1}"
                HorizontalOptions="End"
-               VerticalOptions="Center"  Grid.Row="1"/>
-        <BoxView Grid.Row="1" Grid.Column="1" />
-        <Label Grid.Row="1" Grid.Column="1"
+               VerticalOptions="Center"/>
+        <BoxView Grid.Row="2" Grid.Column="1" />
+        <Label Grid.Row="2" Grid.Column="1"
                Text="x"
                HorizontalOptions="Center"
                VerticalOptions="Center"/>
-        <BoxView Grid.Row="1" Grid.Column="2"/>
-        <Label Grid.Row="1" Grid.Column="2"
+        <BoxView Grid.Row="2" Grid.Column="2"/>
+        <Label Grid.Row="2" Grid.Column="2"
                Text="{Binding Num2}"
                HorizontalOptions="Start"
                VerticalOptions="Center" />
-        <BoxView  Grid.Row="2" Grid.ColumnSpan="3"
+        <BoxView  Grid.Row="3" Grid.ColumnSpan="3"
                  Color="CornflowerBlue" />
-        <Grid Grid.Row="2" Grid.ColumnSpan="3" 
+        <Grid Grid.Row="3" Grid.ColumnSpan="3" 
           ColumnSpacing="2"
           RowSpacing="2">
             <Grid.Resources>
@@ -74,9 +78,9 @@
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="End" />
 
-            <Button Text="CLEAR"
+            <Button Text="CHECK"
                 Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                Command="{Binding ClearCommand}" />
+                Command="{Binding CheckCommand}"/>
 
             <Button Text="&#x21E6;"
                 Grid.Row="1" Grid.Column="2"
@@ -132,13 +136,11 @@
                 Command="{Binding DigitCommand}"
                 CommandParameter="0" />
 
-            <Button Text="&#x23ED;"
+            <Button Text="{Binding Symbol}"
                 Grid.Row="5" Grid.Column="2"
                 Command="{Binding NextCommand}"
                 CommandParameter="." />
         </Grid>
-
-        <!--Editor x:Name="caseEditor" Grid.Row="2" Grid.ColumnSpan="3"  BackgroundColor="#ff97d3ff"  VerticalOptions="FillAndExpand" /-->
     </Grid>
         
 
