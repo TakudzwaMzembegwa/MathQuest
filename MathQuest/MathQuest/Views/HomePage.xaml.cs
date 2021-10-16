@@ -26,14 +26,14 @@ namespace MathQuest.Views
         {
             switch (difficultyLevel)
             {
-                case "Easy":
-                    MultiplicationViewModel.max = 5;
+                case "Difficult":
+                    MultiplicationViewModel.max = 99;
                     break;
                 case "Intermediate":
                     MultiplicationViewModel.max = 12;
                     break;
                 default:
-                    MultiplicationViewModel.max = 99;
+                    MultiplicationViewModel.max = 5;
                     break;
             }
             await Navigation.PushAsync(new MultiplicationPage());
