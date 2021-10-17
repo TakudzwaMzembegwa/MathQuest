@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MathQ.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -22,11 +24,16 @@ namespace MathQuest.ViewModels
         string num1 = "0";
         string num2 = "0";
         Random rand = new Random();
-       
+        DateTime startTime;
+        DateTime finishTime;
+        Stopwatch stopwatch = new Stopwatch();
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MultiplicationViewModel()
         {
+            startTime = DateTime.UtcNow;
             Num1 = rand.Next(max + 1).ToString();
             Num2 = rand.Next(max + 1).ToString();
             Feedback = "MathQuest";
@@ -86,15 +93,35 @@ namespace MathQuest.ViewModels
                 return !(arg == "." && Entry.Contains("."));
             });
 
-            NextCommand = new Command(execute: () =>
+            NextCommand = new Command(execute: async () =>
             {
                 counter++;
                 if (counter == 9)
                 {
+
+                    
                     Symbol = "⟲";
+                    finishTime = DateTime.UtcNow;
+                    TimeSpan questDuration =finishTime.Subtract(startTime);
+                    var duration = questDuration.Minutes + " Min," + questDuration.Seconds + "Sec";
+                    await App.Database.SaveQuestAsync(new Quest
+                    {
+                        questScore = totalCorrect,
+                        questDate = startTime.ToLongDateString(),
+                        questDuration = duration
+
+                    });
+                    String message = await Application.Current.MainPage.DisplayActionSheet("You scored "+totalCorrect+"/10\n Would you like to try again?", "Yes", "No");
+                    if (message == "No")
+                    {
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                    }
+                   
+
                 }
                 else if (counter > 9)
                 {
+                    
                     counter = 0;
                     totalCorrect = 0;
                     Symbol = "⏭";

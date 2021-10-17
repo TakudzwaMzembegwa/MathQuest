@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MathQuest.Views.QuestHistory">
+
+    <StackLayout>
+        <CollectionView x:Name="collectionView"
+                    Margin="20"
+                    >
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                               ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="2">
+                        <Frame>
+                            
+                            <Grid>
+                                <StackLayout Grid.Row="1" Orientation="Horizontal">
+                                   
+                                    <Label Text="Quest No: " FontSize="Medium" FontAttributes="Bold"/>
+                                    <Label Text="{Binding id}"
+                                    FontSize="Medium"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="2" Orientation="Horizontal">
+                                    <Label Text="Quest Score:  " FontAttributes="Bold" FontSize="Medium"/>
+                                    <Label Text="{Binding questScore}"
+                                    FontAttributes="Bold" FontSize="Medium"/>
+                                    <Label Text="/10" FontSize="Medium"
+                                  FontAttributes="Bold" />
+                                </StackLayout>
+                                <StackLayout Grid.Row="3" Orientation="Horizontal">
+                                    <Label Text="Quest taken on : " FontSize="Medium"/>
+                                    <Label Text="{Binding questDate}"
+                                               TextColor="Silver"
+                                               FontSize="Medium" />
+                                </StackLayout>
+                                <StackLayout Grid.Row="4" Orientation="Horizontal">
+                                    <Label Text="Quest Duration: " FontSize="Medium"/>
+                                    <Label Text="{Binding questDuration}"
+                                    FontSize="Medium"/>
+                                    
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                        
+
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

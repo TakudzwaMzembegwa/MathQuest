@@ -33,6 +33,10 @@
                         Clicked="OnSubmit"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
+                <Button Margin="0,10,0,0" Text="Previous Scores"
+                        Clicked="OnView"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
             </StackLayout>
         </ScrollView>
     </Grid>

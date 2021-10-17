@@ -38,5 +38,9 @@ namespace MathQuest.Views
             }
             await Navigation.PushAsync(new MultiplicationPage());
         }
+        async void OnView(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new QuestHistory());
+        }
     }
 }
