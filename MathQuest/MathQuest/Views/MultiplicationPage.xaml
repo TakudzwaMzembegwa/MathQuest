@@ -79,9 +79,9 @@
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="End" />
 
-            <Button Text="CHECK"
+            <Button Text=""
                 Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                Command="{Binding CheckCommand}"/>
+                />
 
             <Button Text="&#x21E6;"
                 Grid.Row="1" Grid.Column="2"
@@ -133,15 +133,21 @@
                 CommandParameter="3" />
 
             <Button Text="0"
-                Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1"
                 Command="{Binding DigitCommand}"
                 CommandParameter="0" />
 
             <Button Text="{Binding Symbol}"
-                Grid.Row="5" Grid.Column="2"
+                Grid.Row="5" Grid.Column="1"
                 Command="{Binding NextCommand}"
+                IsEnabled="{Binding NextIsEnabled}"
                 CommandParameter="." />
-          
+            <Button Text="Check"
+                Grid.Row="5" Grid.Column="2"
+                Command="{Binding CheckCommand}"
+                IsEnabled="{Binding CheckIsEnabled}"
+                CommandParameter="." />
+
         </Grid>
     </Grid>
         

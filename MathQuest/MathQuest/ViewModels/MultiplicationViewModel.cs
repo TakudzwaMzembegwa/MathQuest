@@ -27,6 +27,8 @@ namespace MathQuest.ViewModels
         DateTime startTime;
         DateTime finishTime;
         Stopwatch stopwatch = new Stopwatch();
+        
+
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -34,13 +36,16 @@ namespace MathQuest.ViewModels
         public MultiplicationViewModel()
         {
             startTime = DateTime.UtcNow;
+            counter = 0;
             Num1 = rand.Next(max + 1).ToString();
             Num2 = rand.Next(max + 1).ToString();
             Feedback = "MathQuest";
             FeedbackColor = "#24a0ed";
             Symbol = "⏭";
             CurrentProgress = "0.1";
+          
 
+            
             CheckCommand = new Command(
                 execute: () =>
                 {
@@ -59,7 +64,7 @@ namespace MathQuest.ViewModels
                         Feedback = "Wrong\nAnswer is: " + (int.Parse(num1) * int.Parse(num2)).ToString();
                         FeedbackColor = "#FF0000";
                     }
-                    counter++;
+                    
                     Entry = "0";
                     RefreshCanExecutes();
                 });
@@ -96,14 +101,14 @@ namespace MathQuest.ViewModels
             NextCommand = new Command(execute: async () =>
             {
                 counter++;
-                if (counter == 9)
+                if (counter == 10)
                 {
 
-                    
-                    Symbol = "⟲";
+
+
                     finishTime = DateTime.UtcNow;
-                    TimeSpan questDuration =finishTime.Subtract(startTime);
-                    var duration = questDuration.Minutes + " Min," + questDuration.Seconds + "Sec";
+                    TimeSpan questDuration = finishTime.Subtract(startTime);
+                    var duration = questDuration.Minutes + " Min," + questDuration.Seconds + " Sec";
                     await App.Database.SaveQuestAsync(new Quest
                     {
                         questScore = totalCorrect,
@@ -111,17 +116,22 @@ namespace MathQuest.ViewModels
                         questDuration = duration
 
                     });
-                    String message = await Application.Current.MainPage.DisplayActionSheet("You scored "+totalCorrect+"/10\n Would you like to try again?", "Yes", "No");
+
+                    String message = await Application.Current.MainPage.DisplayActionSheet("You scored " + totalCorrect + "/10\n Would you like to try again?", "Yes", "No");
                     if (message == "No")
                     {
                         await Application.Current.MainPage.Navigation.PopAsync();
                     }
-                   
+                    Symbol = "Start";
+
+
+
 
                 }
-                else if (counter > 9)
+                else if (counter > 10)
                 {
                     
+
                     counter = 0;
                     totalCorrect = 0;
                     Symbol = "⏭";
